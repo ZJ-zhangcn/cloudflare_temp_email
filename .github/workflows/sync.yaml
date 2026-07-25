@@ -22,6 +22,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - name: Trigger backend deployment
-        run: gh workflow run backend_deploy.yaml --ref "${{ github.event.repository.default_branch }}"
+        run: gh workflow run backend_deploy.yaml --repo "${{ github.repository }}" --ref "${{ github.event.repository.default_branch }}"
         env:
           GH_TOKEN: ${{ github.token }}
