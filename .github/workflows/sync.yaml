@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: write
   contents: write
 
 jobs:
@@ -17,5 +18,10 @@ jobs:
     steps:
       - name: Sync upstream changes
         run: gh repo sync ${{ github.repository }} --source dreamhunter2333/cloudflare_temp_email --branch main
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Trigger backend deployment
+        run: gh workflow run backend_deploy.yaml --ref "${{ github.event.repository.default_branch }}"
         env:
           GH_TOKEN: ${{ github.token }}
