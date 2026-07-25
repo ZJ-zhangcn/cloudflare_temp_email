@@ -56,6 +56,7 @@ jobs:
           printf '%s\n' "$WRANGLER_TOML_CONTENT" > wrangler.toml
           
           pnpm install --no-frozen-lockfile
+          pnpm test
 
           if [ -n "$use_mail_wasm_parser" ]; then
             echo "Using mail-parser-wasm-worker"

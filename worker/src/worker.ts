@@ -24,6 +24,7 @@ const API_PATHS = [
 	"/admin/",
 	"/telegram/",
 	"/external/",
+	"/health_check",
 ];
 
 const app = new Hono<HonoCustomType>()
