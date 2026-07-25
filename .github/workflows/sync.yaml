@@ -5,6 +5,9 @@ on:
     - cron: "0 0 * * 1"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   sync_latest_from_upstream:
     name: Sync latest commits from upstream repo
@@ -15,4 +18,4 @@ jobs:
       - name: Sync upstream changes
         run: gh repo sync ${{ github.repository }} --source dreamhunter2333/cloudflare_temp_email --branch main
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
