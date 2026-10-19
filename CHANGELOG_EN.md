@@ -18,10 +18,12 @@
 
 - fix: |Mail| Check the SMTP envelope sender and every From email address against sender blacklists; parse addresses independently so body parsing failures or multiple From addresses cannot skip matching; preserve envelope checks on address parsing errors
 - fix: |AI Extract| In `ai` mode, an address allowlist miss now skips only the Workers AI call and still falls back to local verification-code extraction
+- fix: |Telegram| Fall back to HTML-to-text conversion when plain text body is empty, preventing "parse failed" messages in Telegram notifications
 
 ### Improvements
 
 - feat: |AI Extract| Improve local verification-code rules: also read the mail subject; support codes before keywords (e.g. `116352（动态验证码）`, `ABC123 is your code`), `G-123456` prefixes, grouped / spaced / zero-width-split / full-width codes, and Russian, Spanish, Portuguese, French, German, Italian, Turkish and Hebrew keywords; reject numbers longer than 8 digits, decimals and amounts, times, digits in URLs and email addresses, tracking / order / voucher codes and letters-only words; only accept keyword-less numbers in stricter positions; bound input length and remove regex backtracking risks
+- feat: |Frontend| Unify desktop and mobile mail summaries with prominent subjects, full sender identities and body previews; use theme-aware reader buttons and attachment-count badges, add keyboard-accessible actions and a mail-details dialog
 
 ## v1.12.0
 
